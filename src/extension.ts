@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 
-const opn = require("opn");
+const open = require("open");
 
 class Rule {
     constructor(public readonly pattern: string, public readonly list: string[]) {
@@ -64,6 +64,6 @@ export function activate(context: vscode.ExtensionContext) {
             }
         }
 
-        opn(url);
+        open(url);
     }));
 }
