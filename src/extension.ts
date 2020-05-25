@@ -36,7 +36,7 @@ async function selectUrlFromPick(urls: string[]) {
     });
 
     const selectedUrl = await vscode.window.showQuickPick(urlQuickPickItems,
-        { placeHolder: 'Browse url' });
+        { placeHolder: 'Open in browser' });
     return selectedUrl?.url;
 }
 
@@ -47,10 +47,13 @@ export function activate(context: vscode.ExtensionContext) {
             return;
         }
         const currentFilePath = activeTextEditor.document.fileName;
+        console.info(`Current file path: ${currentFilePath}`);
 
         const rules = Configuration.Load();
         const matchedRule = rules.find(x => x.match(currentFilePath))
+        console.info(`Matched rule: ${JSON.stringify(matchedRule)}`);
         const urls = matchedRule?.expand(currentFilePath) || [];
+        console.info(`Urls: ${urls}`);
 
         let url;
         if (urls.length == 0) {
@@ -64,6 +67,7 @@ export function activate(context: vscode.ExtensionContext) {
             }
         }
 
+        console.info(`Opening ${url} in browser`);
         open(url);
     }));
 }
