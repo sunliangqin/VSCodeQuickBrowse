@@ -1,0 +1,71 @@
+{
+    "name": "quick-browse",
+    "displayName": "Quick Browse",
+    "description": "Enables quick open current file in browser",
+    "version": "1.0.0",
+    "license": "MIT",
+    "engines": {
+        "vscode": "^1.45.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "publisher": "Liangqin",
+    "activationEvents": [
+        "onCommand:quickBrowse.browse"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "quickBrowse.browse",
+                "title": "Open in Browser"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "quickBrowse.browse",
+                "key": "ctrl+alt+b",
+                "when": "editorTextFocus"
+            }
+        ],
+        "configuration": [
+            {
+                "title": "Quick Browse",
+                "properties": {
+                    "quickBrowse.rules": {
+                        "type": "array",
+                        "default": [],
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "pattern": {
+                                    "type": "string"
+                                },
+                                "list": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Quick browse rules"
+                    }
+                }
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./"
+    },
+    "devDependencies": {
+        "typescript": "^3.3.1",
+        "@types/vscode": "^1.36.0",
+        "tslint": "^5.12.1",
+        "@types/node": "^10.12.21",
+        "@types/mocha": "^2.2.42"
+    }
+}
