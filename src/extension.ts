@@ -17,7 +17,7 @@ class Rule {
     }
 }
 
-class Configuration {
+class RuleConfig {
     static Load() {
         const rules = vscode.workspace.getConfiguration().get<Rule[]>(
             'quickBrowse.rules', []);
@@ -49,7 +49,7 @@ export function activate(context: vscode.ExtensionContext) {
         const currentFilePath = activeTextEditor.document.fileName.replace(/\\/g, '/');
         console.info(`Current file path: ${currentFilePath}`);
 
-        const rules = Configuration.Load();
+        const rules = RuleConfig.Load();
         const matchedRule = rules.find(x => x.match(currentFilePath))
         console.info(`Matched rule: ${JSON.stringify(matchedRule)}`);
         const urls = matchedRule?.expand(currentFilePath) || [];
