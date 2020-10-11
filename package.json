@@ -2,7 +2,7 @@
     "name": "quick-browse",
     "displayName": "Quick Browse",
     "description": "Enables quick open current file in browser",
-    "version": "1.7.0",
+    "version": "1.8.0",
     "license": "MIT",
     "engines": {
         "vscode": "^1.50.0"
