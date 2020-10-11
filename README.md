@@ -1,7 +1,7 @@
 # Introduction
 This extension enables you quickly open the current file in browser.
 
-![Quick Browse](images/quick-browse.gif)
+![Quick Browse](assets/quick-browse.gif)
 
 # Setting
 Here is an example to enable this project to quick browse the current file in github (keyboard shortcut `Ctrl+Alt+B`).
